@@ -1,5 +1,7 @@
 # custom
+/build
 /dist
+/public/dist
 /change.stamp
 package-lock.json
 config/development.json

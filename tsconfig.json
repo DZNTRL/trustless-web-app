@@ -14,7 +14,7 @@
     },
     "include": [
         "src/**/*.ts", "src/index.ts", "src/tests/**/*.spec.ts", "src/*.tsx"
-    ],
+, "src/server/routes/home.tsx", "src/client/Index.tsx"],
     "exclude": [
         "node_modules"
     ],
