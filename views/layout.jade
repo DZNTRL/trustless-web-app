@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    link(rel='shortcut icon', href='images/favicon.png')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='stylesheets/icon.css')
+    link(rel='stylesheet', href='stylesheets/loader.css')
+    link(rel='stylesheet', href='stylesheets/idangerous.swiper.css')
+    link(rel='stylesheet', href='stylesheets/jquery-ui.css')
+    link(rel='stylesheet', href='stylesheets/stylesheet.css')
+    //if lt IE 10
+      link(rel='stylesheet', type='text/css', href='stylesheets/ie-9.css')
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+
+  body
+    block header
+      include shared/header.jade
+      div#content-block
+        block content
+    block footer
+      include shared/footer.jade 
+    block scripts
+      script(src='javascripts/lib/jquery-2.1.4.min.js')
+      script(src='javascripts/lib/jquery-ui.min.js')
+      script(src='javascripts/lib/bootstrap.min.js')
+      script(src='javascripts/lib/idangerous.swiper.min.js')
+      script(src='javascripts/lib/jquery.mixitup.js')
+      script(src='javascripts/lib/jquery.viewportchecker.min.js')
+      script(src='javascripts/lib/filters.js')
+      script(src='javascripts/lib/global.js')
+
