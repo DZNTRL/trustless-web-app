@@ -5,7 +5,7 @@
 /change.stamp
 package-lock.json
 config/development.json
-
+.env
 # Logs
 logs
 *.log
