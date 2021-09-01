@@ -3,7 +3,7 @@ import config from "config"
 
 export function generateAccessToken(username: string, challenge: string, secret: string) {
     var expiry = config.get("jwtTimeout")
-    return jwt.sign(username, secret, { expiresIn: expiry });
+    return jwt.sign({data: {username, challenge}}, secret, { expiresIn: 60*60 });
 }
 
 export function authenticateToken(req, res, next) {

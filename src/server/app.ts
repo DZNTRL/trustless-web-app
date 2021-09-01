@@ -3,8 +3,16 @@ import express from "express"
 import path from "path"
 import cookieParser from "cookie-parser"
 import logger from "morgan"
+import swaggerJSDoc from "swagger-jsdoc"
+import swaggerUI from "swagger-ui-express"
+import indexRouter from "./routes/index"
+const swaggerDoc = require("../../documentation/v1/swagger.json")
 
-var indexRouter = require('./routes/index')
+console.log(path.join(__dirname, "/routes/*.js"))
+var options = {
+  explorer: true
+};
+
 
 var app = express();
 
@@ -12,13 +20,13 @@ var app = express();
 app.set('views', path.resolve(__dirname, '../../views'));
 app.set('view engine', 'pug');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
+app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDoc, options))
+app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
