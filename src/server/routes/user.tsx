@@ -1,10 +1,9 @@
 import express from "express"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import App from "../../client/App"
-import validator from "express-validator"
 import { generateAccessToken, authenticateToken } from "../utils"
 import dotenv from "dotenv"
+import { IUser } from "pro-web-core"
 
 dotenv.config()
 
@@ -19,8 +18,12 @@ export default function _controller(router: express.Router) {
      *              description: return boolean indicating whether username exists
      *              schema: type: "Repsonse<boolean>"
      */
-    router.get("/user/unique/:username", function(req, res, next) {
-        res.json({username: req.params.username})
+    router.get("/user/unique/:username", async function(req, res, next) {
+        const db = req.app.get("db");        
+        const user: IUser = req.app.get("userService")        
+        const resp = await user.checkUsernameUnique(req.params.username)
+        console.warn(resp)
+        res.json(resp)
         
     })
     router.post("/user", function(req, res, next) {
@@ -47,11 +50,7 @@ export default function _controller(router: express.Router) {
         res.json({auth: false})
     })
     router.get("/user/:username", function(req, res, next) {
-        res.json({
-            username: "test",
-            publicKey: "test",
-            id: 0
-        })
+
     })
     router.put("/user/:id", function(req, res, next) {
         res.json({

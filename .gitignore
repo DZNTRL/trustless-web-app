@@ -6,6 +6,7 @@
 package-lock.json
 config/development.json
 .env
+.parcel-cache
 # Logs
 logs
 *.log

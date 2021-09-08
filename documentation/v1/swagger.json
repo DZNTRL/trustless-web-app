@@ -34,7 +34,6 @@
           "description": "This can only be done by the logged in user.",
           "operationId": "createUser",
           "produces": [
-            "application/xml",
             "application/json"
           ],
           "parameters": [
@@ -58,6 +57,25 @@
           }
         }
       },
+      "/user/unique/{username}": {
+        "tags": ["user"],
+        "summary": "",
+        "operationId": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      },
       "/user/request-session": {
         "post": {
           "tags": [
@@ -67,9 +85,8 @@
           "description": "",
           "operationId": "createUsersWithArrayInput",
           "produces": [
-            "application/xml",
             "application/json"
-          ],
+          ],          
           "parameters": [
             {
               "in": "body",
@@ -100,7 +117,6 @@
           "description": "",
           "operationId": "loginUser",
           "produces": [
-            "application/xml",
             "application/json"
           ],
           "parameters": [
@@ -127,7 +143,7 @@
               "headers": {
                 "X-Rate-Limit": {
                   "type": "integer",
-                  "format": "int32",
+                  "format": "",
                   "description": "calls per hour allowed by the user"
                 },
                 "X-Expires-After": {
@@ -152,7 +168,6 @@
           "description": "",
           "operationId": "logoutUser",
           "produces": [
-            "application/xml",
             "application/json"
           ],
           "parameters": [],
@@ -172,7 +187,6 @@
           "description": "",
           "operationId": "getUserByName",
           "produces": [
-            "application/xml",
             "application/json"
           ],
           "parameters": [
@@ -207,7 +221,6 @@
           "description": "This can only be done by the logged in user.",
           "operationId": "updateUser",
           "produces": [
-            "application/xml",
             "application/json"
           ],
           "parameters": [
@@ -245,7 +258,6 @@
           "description": "This can only be done by the logged in user.",
           "operationId": "deleteUser",
           "produces": [
-            "application/xml",
             "application/json"
           ],
           "parameters": [
