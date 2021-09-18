@@ -108,7 +108,7 @@
           }
         }
       },
-      "/user/login": {
+      "/login": {
         "post": {
           "tags": [
             "user"
@@ -159,7 +159,7 @@
           }
         }
       },
-      "/user/logout": {
+      "/logout": {
         "get": {
           "tags": [
             "user"
