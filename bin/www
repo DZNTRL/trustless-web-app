@@ -4,14 +4,15 @@
  * Module dependencies.
  */
 
-var app = require('../build/server/app');
+var createApp = require('../build/server/app').createApp;
 var debug = require('debug')('pro-web-app:server');
 var http = require('http');
-
+var Core = require("pro-web-core").default
 /**
  * Get port from environment and store in Express.
  */
 
+const app = createApp(Core);
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
