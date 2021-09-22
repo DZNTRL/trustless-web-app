@@ -8,10 +8,9 @@ import { IUser } from "pro-web-core"
 
 export default function _controller(router: express.Router) {
     router.get("/user/unique/:username", async function(req, res, next) {
-        const db = req.app.get("db")
+        console.log("get the unique user name")
         const user: IUser = req.app.get("userService")
         const resp = await user.checkUsernameUnique(req.params.username)
-        console.warn(resp)
         res.json(resp)
     })
     router.post("/user", function(req, res, next) {
@@ -44,4 +43,15 @@ export default function _controller(router: express.Router) {
         res.statusCode = 405
         res.send()
     })
+      //login/out
+  router.post('/login', passport.authenticate("challenge", {session: false}), (req, res) => {
+    //@ts-ignore
+    res.json(req.user)
+  })
+
+  router.get("/logout", function(req, res, next) {
+    res.json({auth: false})
+  })
+  //login/out
+
 };

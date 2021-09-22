@@ -60,17 +60,6 @@ export function createApp(core: IProWebCore) {
     res.status(err.status || 500)
     res.render("error")
   })
-
-  //login/out
-  app.post('/login', passport.authenticate("challenge", {session: false}), (req, res) => {
-    //@ts-ignore
-    res.json(req.user)
-  })
-
-  app.get("/logout", function(req, res, next) {
-    res.json({auth: false})
-  })
-  //login/out
   
   return app
 }

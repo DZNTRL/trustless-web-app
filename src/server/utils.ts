@@ -4,11 +4,11 @@ import dotenv from "dotenv"
 import passportJWT from "passport-jwt"
 import LocalStrategy from "passport-local"
 import express from "express"
-import { IUser, ProWebEnums } from "pro-web-core"
+import { IUser } from "pro-web-core"
+
 export function getJWT(request) {
   const authHeader = request.headers["authorization"]
-  const token = authHeader && authHeader.split(' ')[1]
-  return token;
+  return authHeader;
 }
 
 export function generateAccessToken(user: IUser, secret: string) {
@@ -32,16 +32,14 @@ export function authenticateToken(req, res, next) {
 export function setupJwtAuth() {
   dotenv.config()
   const options = {
-    secretOrKeyProvider: process.env.JWT_SECRET,
+    secretOrKey: process.env.JWT_SECRET,
     jwtFromRequest: (request) => {
       return getJWT(request)
     },
-    issuer: "localhost",
-    aud: "jbotwapi"
+    aud: "http://localhost"
   }
   const verify = (jtwPayload, done: (err, user, info) => void) => {
-    console.log("verify()payload", jtwPayload)
-    done(null, {test: "test"}, {})
+    done(null, {test: "test"}, {} )
   }
 
   const strategy = new passportJWT.Strategy(options, verify)
@@ -57,11 +55,11 @@ export function setupPKAuth(app: express.Application) {
         return done(challengeResp.Message, null)
       }
       if(challengeResp.Data === false) {
-        return done(null, { token: null })  
+        return done(null, { token: null })
       }
       const userResp = await userService.get(username)
       if(userResp.IsError) {
-        return done(userResp.Message, null)
+        return done(userResp.Message, {token: null})
       } else {
         dotenv.config()
         //@ts-ignore
