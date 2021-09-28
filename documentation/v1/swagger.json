@@ -76,34 +76,36 @@
           }
         }
       },
-      "/user/request-session": {
+      "/request-session": {
         "post": {
           "tags": [
             "user"
           ],
           "summary": "Creates list of users with given input array",
-          "description": "",
-          "operationId": "createUsersWithArrayInput",
+          "operationId": "requestSession",
           "produces": [
             "application/json"
           ],          
           "parameters": [
             {
-              "in": "body",
-              "name": "body",
-              "description": "List of user object",
+              "in": "path",
+              "name": "username",
+              "description": "username for which to create challege",
               "required": true,
               "schema": {
-                "type": "object",
-                "items": {
-                  "$ref": "#/definitions/SessionRequest"
-                }
+                "type": "string"
               }
             }
           ],
           "responses": {
-            "default": {
-              "description": "successful operation"
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "400": {
+              "description": "Invalid username supplied"
             }
           }
         }
@@ -139,18 +141,6 @@
               "description": "successful operation",
               "schema": {
                 "type": "string"
-              },
-              "headers": {
-                "X-Rate-Limit": {
-                  "type": "integer",
-                  "format": "",
-                  "description": "calls per hour allowed by the user"
-                },
-                "X-Expires-After": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "date in UTC when token expires"
-                }
               }
             },
             "400": {
