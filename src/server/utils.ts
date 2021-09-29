@@ -19,14 +19,24 @@ export function generateAccessToken(user: IUser, secret: string) {
 export function authenticateToken(req, res, next) {
   const token = getJWT(req)
   if (token == null) return res.sendStatus(401)
-
-  jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, user: any) => {
+  jwt.verify(token, process.env.TOKEN_SECRET as string, (req: express.Request, err: any, user: any) => {
     if (err) return res.sendStatus(403)
-
+    //@ts-ignore
     req.user = user
 
     next()
   })
+}
+
+export function verifyNoToken(req, res, next) {
+  
+  const token = getJWT(req)
+  if(token) {
+    res.statusCode = 400
+    return res.send("")
+  } else {
+    next()
+  }
 }
 
 export function setupJwtAuth() {
@@ -38,8 +48,14 @@ export function setupJwtAuth() {
     },
     aud: "http://localhost"
   }
-  const verify = (jtwPayload, done: (err, user, info) => void) => {
-    done(null, {test: "test"}, {} )
+  const verify = (jwtPayload, done: (err, user, info) => void) => {
+    if(!jwtPayload.data) {
+      return done(null, null, null)
+    }
+    if(jwtPayload.exp * 1000 < Date.now()) {
+      return done(null, null, null)
+    }
+    done(null, jwtPayload.data, {})
   }
 
   const strategy = new passportJWT.Strategy(options, verify)
@@ -50,7 +66,7 @@ export function setupPKAuth(app: express.Application) {
   const localStrategy = new LocalStrategy(
     async function(username, challenge, done) {
       const userService: IUser = app.get("userService")
-      const challengeResp = await userService.verifyChallenge(username, challenge)
+      const challengeResp = await userService.login(username, challenge)
       if(challengeResp.IsError) {
         return done(challengeResp.Message, null)
       }
