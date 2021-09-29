@@ -49,8 +49,13 @@ export function setupJwtAuth() {
     aud: "http://localhost"
   }
   const verify = (jwtPayload, done: (err, user, info) => void) => {
-    console.log("this is my jwtpayload", jwtPayload)
-    done(null, {test: "test"}, {} )
+    if(!jwtPayload.data) {
+      return done(null, null, null)
+    }
+    if(jwtPayload.exp * 1000 < Date.now()) {
+      return done(null, null, null)
+    }
+    done(null, jwtPayload.data, {})
   }
 
   const strategy = new passportJWT.Strategy(options, verify)

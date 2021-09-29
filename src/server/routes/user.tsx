@@ -4,7 +4,6 @@ import ReactDOMServer from "react-dom/server"
 import passport from "passport"
 import * as validator from "express-validator"
 import { authenticateToken, verifyNoToken} from "../utils"
-import dotenv from "dotenv"
 import { IUser } from "pro-web-core"
 import { ResponseMessages } from "pro-web-core/dist/js/enums/ResponseMessages"
 import Core from "pro-web-core"
@@ -26,6 +25,8 @@ export default function _controller(router: express.Router) {
     })
     router.get("/request-session/:username",
         verifyNoToken,
+        validator.param("username").escape(),
+        validator.param("username").stripLow(false),
         validator.param("username")
             .custom(async username => {
                 const result = await Core.Validators.username.validate(username)
@@ -51,7 +52,6 @@ export default function _controller(router: express.Router) {
                 res.statusCode = 500
                 return res.json(resp)
             }
-            console.log("made it past 500")
             if(challenge.Message === ResponseMessages.NotFound.toString()) {
                 res.statusCode = 400
                 return res.json(resp)
