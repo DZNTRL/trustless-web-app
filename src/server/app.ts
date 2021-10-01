@@ -6,6 +6,7 @@ import logger from "morgan"
 import passport from "passport"
 import swaggerUI from "swagger-ui-express"
 import indexRouter from "./routes/index"
+import apiRouter from "./routes/api"
 import { createPool } from "pro-web-core"
 import config from "config"
 import { setupJwtAuth, setupPKAuth } from "./utils"
@@ -46,7 +47,8 @@ export function createApp(core: IProWebCore) {
   app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDoc, options))
   
   app.use("/", indexRouter)
-   
+  app.use("/api", apiRouter) 
+
   app.use(function(req, res, next) {
     next(createError(404))
   })

@@ -25,7 +25,7 @@
       "http"
     ],
     "paths": {
-      "/user": {
+      "/api/user": {
         "post": {
           "tags": [
             "user"
@@ -57,7 +57,7 @@
           }
         }
       },
-      "/user/unique/{username}": {
+      "/api/user/unique/{username}": {
         "tags": ["user"],
         "summary": "",
         "operationId": "",
@@ -76,7 +76,7 @@
           }
         }
       },
-      "/request-session": {
+      "/api/request-session": {
         "post": {
           "tags": [
             "user"
@@ -110,7 +110,7 @@
           }
         }
       },
-      "/login": {
+      "/api/login": {
         "post": {
           "tags": [
             "user"
@@ -149,7 +149,7 @@
           }
         }
       },
-      "/logout": {
+      "/api/logout": {
         "get": {
           "tags": [
             "user"
@@ -168,7 +168,7 @@
           }
         }
       },
-      "/user/{username}": {
+      "/api/user/{username}": {
         "get": {
           "tags": [
             "user"
