@@ -5,7 +5,9 @@
   "main": "build/server/app.js",
   "scripts": {
     "start": "node ./bin/www",
-    "build": "npx tsc --skipLibCheck && npx parcel build build/client/Index.js --out-dir ./public/dist && node ./changeUpdate"
+    "tsc": "npx tsc --skipLibCheck",
+    "build-getting-in": "npx parcel build build/client/entryPoints/GettingIn.js --out-dir ./public/dist && node ./changeUpdate",
+    "build": "yarn run tsc && npx parcel build build/client/Index.js --out-dir ./public/dist && yarn run build-getting-in && node ./changeUpdate"
   },
   "dependencies": {
     "config": "^3.3.6",

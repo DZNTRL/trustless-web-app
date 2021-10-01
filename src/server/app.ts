@@ -29,7 +29,7 @@ export function createApp(core: IProWebCore) {
   app.use(express.json())
   app.use(express.urlencoded({ extended: false }))
   app.use(cookieParser())
-  app.use(express.static(path.join(__dirname, "public")))
+  app.use(express.static("public"))
   // passport
   app.use(passport.initialize())
   passport.serializeUser(function(user, done) {
@@ -45,7 +45,6 @@ export function createApp(core: IProWebCore) {
   //end passport
 
   app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDoc, options))
-  
   app.use("/", indexRouter)
   app.use("/api", apiRouter) 
 

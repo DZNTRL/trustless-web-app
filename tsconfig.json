@@ -13,8 +13,8 @@
         "declaration": true
     },
     "include": [
-        "src/**/*.ts", "src/index.ts", "src/tests/**/*.spec.ts", "src/*.tsx"
-, "src/server/routes/home.tsx", "src/client/Index.tsx"],
+        "src/**/*.ts", "src/index.ts", "src/tests/**/*.spec.ts", "src/**/*.tsx"
+, "src/server/routes/home.tsx", "src/client/Index.tsx", "src/server/routes/user.tsx"],
     "exclude": [
         "node_modules"
     ],
