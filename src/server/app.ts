@@ -44,6 +44,7 @@ export function createApp(core: IProWebCore) {
   passport.use(setupPKAuth(app))
   //end passport
 
+
   app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDoc, options))
   app.use("/", indexRouter)
   app.use("/api", apiRouter) 
