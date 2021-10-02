@@ -6,6 +6,7 @@ import App from "../../client/App"
 import GettingIn from "../../client/sections/GettingIn"
 import SessionBoard from "../../client/sections/SessionBoard"
 import { verifyNoToken } from "../utils"
+import request from "request"
 
 export default function _controller(router: express.Router) {
     /* GET home page. */
@@ -33,5 +34,20 @@ export default function _controller(router: express.Router) {
             title: "Session Messenger Board",
             content: app
         })
+    })
+    router.get("/storybook", function(req, res, next) {
+        request("http://localhost:6006").pipe(res)
+    })
+    router.get(/\.manager\.bundle\.js/, function(req, res, next) {
+        request(`http://localhost:6006/${req.path}`).pipe(res)
+    })
+    router.get(/iframe\.html/, function(req, res, next) {
+        request(`http://localhost:6006/${req.path}`).pipe(res)
+    })
+    router.get(/iframe\.bundle\.js/, function(req, res, next) {
+        request(`http://localhost:6006/${req.path}`).pipe(res)
+    })
+    router.get(/static\/media\/src/, function(req, res, next) {
+        request(`http://localhost:6006/${req.path}`).pipe(res)
     })
 };
