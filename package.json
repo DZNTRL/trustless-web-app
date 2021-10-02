@@ -5,7 +5,11 @@
   "main": "build/server/app.js",
   "scripts": {
     "start": "node ./bin/www",
-    "build": "npx tsc --skipLibCheck && npx parcel build build/client/Index.js --out-dir ./public/dist && node ./changeUpdate"
+    "tsc": "npx tsc --skipLibCheck",
+    "build-getting-in": "npx parcel build build/client/entryPoints/GettingIn.js --out-dir ./public/dist && node ./changeUpdate",
+    "build": "yarn run tsc && npx parcel build build/client/Index.js --out-dir ./public/dist && yarn run build-getting-in && node ./changeUpdate",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "config": "^3.3.6",
@@ -24,12 +28,20 @@
     "pug": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "request": "^2.88.2",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
     "@types/express": "^4.17.13",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.32.0",
-    "parcel": "1.12.3"
+    "parcel": "1.12.3",
+    "typescript": "^4.4.3"
   }
 }
