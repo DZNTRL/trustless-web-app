@@ -57,7 +57,8 @@ export default function _controller(router: express.Router) {
                 return res.json(resp)
             }
             res.json(challenge)
-    })
+        }
+    )
     router.get("/profile", authenticateToken, function(req, res, next) {
         res.json({auth: true})
     })
@@ -88,6 +89,9 @@ export default function _controller(router: express.Router) {
         res.json("OK")
     })
 
+    router.get("/logout", function(req, res, next) {
+        res.json("OK")
+    })
     //login/out
 
 };

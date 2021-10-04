@@ -26,6 +26,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pro-web-core": "./pro-web-core",
+    "pro-web-app-cli-api-service": "./pro-web-app-cli-api-service",
     "pug": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
