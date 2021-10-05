@@ -39,7 +39,7 @@ export function createApp(core: IProWebCore) {
   passport.deserializeUser(function(user, done) {
     done(null, user)
   })
-
+  passport.use(setupCookieParser())
   passport.use(setupJwtAuth())
   passport.use(setupPKAuth(app))
   //end passport

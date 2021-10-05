@@ -94,5 +94,9 @@ export function setupPKAuth(app: express.Application) {
 export function setupCookieParser() {
   dotenv.config()
   const options = config.get("cookieSettings")
+<<<<<<< HEAD
   return CookieParser(process.env.COOKIE_SIGNER, {httpOnly: false})
+=======
+  return CookieParser(process.env.COOKIE_SIGNER, options)
+>>>>>>> JBOT-54 implement cookieparser lib
 }

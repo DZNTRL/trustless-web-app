@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "config": "^3.3.6",
-    "cookie-parser": "~1.4.4",
+    "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
@@ -25,8 +25,8 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "pro-web-core": "./pro-web-core",
     "pro-web-app-cli-api-service": "./pro-web-app-cli-api-service",
+    "pro-web-core": "./pro-web-core",
     "pug": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
