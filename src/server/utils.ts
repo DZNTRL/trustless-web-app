@@ -24,7 +24,6 @@ export function authenticateToken(req, res, next) {
     if (err) return res.sendStatus(403)
     //@ts-ignore
     req.user = user
-
     next()
   })
 }
