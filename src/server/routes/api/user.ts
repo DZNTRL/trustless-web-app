@@ -76,15 +76,18 @@ export default function _controller(router: express.Router) {
         res.statusCode = 405
         res.send()
     })
-      //login/out
-  router.post('/login', passport.authenticate("challenge", {session: false}), (req, res) => {
-    //@ts-ignore
-    res.json(req.user)
-  })
+    //login/out
+    router.post('/login', passport.authenticate("challenge", {session: false}), (req, res) => {
+        //@ts-ignore
+        res.cookie("authorization", `Bearer ${req.user.token}`)
+        res.json("OK")
+    })
 
-  router.get("/logout", function(req, res, next) {
-    res.json({auth: false})
-  })
-  //login/out
+    router.get("/logout", passport.authenticate("jwt"), function(req, res, next) {
+        res.clearCookie("authorization")
+        res.json("OK")
+    })
+
+    //login/out
 
 };
