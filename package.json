@@ -9,7 +9,8 @@
     "build-getting-in": "npx parcel build build/client/entryPoints/GettingIn.js --out-dir ./public/dist && node ./changeUpdate",
     "build": "yarn run tsc && npx parcel build build/client/Index.js --out-dir ./public/dist && yarn run build-getting-in && node ./changeUpdate",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "main": "build/server/app.js"
   },
   "dependencies": {
     "config": "^3.3.6",

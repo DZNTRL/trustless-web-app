@@ -3,11 +3,12 @@ import config from "config"
 import dotenv from "dotenv"
 import passportJWT from "passport-jwt"
 import LocalStrategy from "passport-local"
+import CookieParser from "cookie-parser"
 import express from "express"
 import { IUser } from "pro-web-core"
 
 export function getJWT(request) {
-  const authHeader = request.headers["authorization"]
+  const authHeader = request.cookies["authorization"]
   return authHeader;
 }
 
@@ -18,7 +19,7 @@ export function generateAccessToken(user: IUser, secret: string) {
 
 export function authenticateToken(req, res, next) {
   const token = getJWT(req)
-  if (token == null) return res.sendStatus(401)
+  if (!token) return res.sendStatus(401)
   jwt.verify(token, process.env.TOKEN_SECRET as string, (req: express.Request, err: any, user: any) => {
     if (err) return res.sendStatus(403)
     //@ts-ignore
@@ -29,8 +30,8 @@ export function authenticateToken(req, res, next) {
 }
 
 export function verifyNoToken(req, res, next) {
-  
   const token = getJWT(req)
+  console.log("verify no token", token)
   if(token) {
     res.statusCode = 400
     return res.send("")
@@ -44,11 +45,14 @@ export function setupJwtAuth() {
   const options = {
     secretOrKey: process.env.JWT_SECRET,
     jwtFromRequest: (request) => {
-      return getJWT(request)
+      const result = getJWT(request)
+      console.log("result", result)
+      return result
     },
     aud: "http://localhost"
   }
   const verify = (jwtPayload, done: (err, user, info) => void) => {
+    console.log('in verify jwt')
     if(!jwtPayload.data) {
       return done(null, null, null)
     }
@@ -86,4 +90,10 @@ export function setupPKAuth(app: express.Application) {
   )
   localStrategy.name = "challenge"
   return localStrategy
+}
+
+export function setupCookieParser() {
+  dotenv.config()
+  const options = config.get("cookieSettings")
+  return CookieParser(process.env.COOKIE_SIGNER, {httpOnly: false})
 }

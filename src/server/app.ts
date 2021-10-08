@@ -9,7 +9,7 @@ import indexRouter from "./routes/index"
 import apiRouter from "./routes/api"
 import { createPool } from "pro-web-core"
 import config from "config"
-import { setupJwtAuth, setupPKAuth } from "./utils"
+import { setupJwtAuth, setupPKAuth, setupCookieParser } from "./utils"
 import { IProWebCore } from "pro-web-core"
 
 const swaggerDoc = require("../../documentation/v1/swagger.json")
@@ -25,11 +25,11 @@ export function createApp(core: IProWebCore) {
   app.set("view engine", "pug")
   app.set("pool", createPool(dbConfig))
   app.set("userService", new core.Service.User(app.get("pool")))
+
   app.use(logger("dev"))
   app.use(express.json())
   app.use(express.urlencoded({ extended: false }))
-  app.use(cookieParser())
-  app.use(express.static("public"))
+  app.use(setupCookieParser())
   // passport
   app.use(passport.initialize())
   passport.serializeUser(function(user, done) {
@@ -44,15 +44,13 @@ export function createApp(core: IProWebCore) {
   passport.use(setupPKAuth(app))
   //end passport
 
-
   app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDoc, options))
   app.use("/", indexRouter)
   app.use("/api", apiRouter) 
-
+  app.use(express.static("public"))
   app.use(function(req, res, next) {
     next(createError(404))
   })
-  
   // error handler
   app.use(function(err, req, res, next) {
     // set locals, only providing error in development
