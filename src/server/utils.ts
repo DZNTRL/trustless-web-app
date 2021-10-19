@@ -5,16 +5,16 @@ import passportJWT from "passport-jwt"
 import LocalStrategy from "passport-local"
 import CookieParser from "cookie-parser"
 import express from "express"
-import { IUser } from "pro-web-core"
+import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
 
 export function getJWT(request) {
   const authHeader = request.cookies["authorization"]
-  return authHeader;
+  return authHeader
 }
 
 export function generateAccessToken(user: IUser, secret: string) {
     var expiry = config.get("jwtTimeout")
-    return jwt.sign({data: user}, secret, { expiresIn: 60*60 });
+    return jwt.sign({data: user}, secret, { expiresIn: 60*60 })
 }
 
 export function authenticateToken(req, res, next) {
@@ -51,7 +51,7 @@ export function setupJwtAuth() {
     aud: "http://localhost"
   }
   const verify = (jwtPayload, done: (err, user, info) => void) => {
-    console.log('in verify jwt')
+    console.log("in verify jwt")
     if(!jwtPayload.data) {
       return done(null, null, null)
     }
@@ -94,9 +94,5 @@ export function setupPKAuth(app: express.Application) {
 export function setupCookieParser() {
   dotenv.config()
   const options = config.get("cookieSettings")
-<<<<<<< HEAD
-  return CookieParser(process.env.COOKIE_SIGNER, {httpOnly: false})
-=======
-  return CookieParser(process.env.COOKIE_SIGNER, options)
->>>>>>> JBOT-54 implement cookieparser lib
+ return CookieParser(process.env.COOKIE_SIGNER, options)
 }

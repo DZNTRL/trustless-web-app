@@ -1,12 +1,10 @@
 import React from "react"
-import { createServices } from "pro-web-app-cli-api-service"
+import CheckUsername from "../pages/Checkusername"
 
 const GettingIn: React.FunctionComponent = () => {
     const onClick = () => alert("hi")
     return <>
-        <button onClick={onClick}>
-            Getting In
-        </button>
+        <CheckUsername />
     </>
 }
 

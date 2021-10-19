@@ -4,8 +4,9 @@ import ReactDOMServer from "react-dom/server"
 import passport from "passport"
 import * as validator from "express-validator"
 import { authenticateToken, verifyNoToken} from "../../utils"
-import { IUser } from "pro-web-core"
+import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
 import { ResponseMessages } from "pro-web-core/dist/js/enums/ResponseMessages"
+import { Validators } from "pro-web-common/dist/js/validators"
 import Core from "pro-web-core"
 
 export default function _controller(router: express.Router) {
@@ -29,7 +30,7 @@ export default function _controller(router: express.Router) {
         validator.param("username").stripLow(false),
         validator.param("username")
             .custom(async username => {
-                const result = await Core.Validators.username.validate(username)
+                const result = await Validators.username.validate(username)
                 if(result !== username) {
                     Promise.reject(result.toString())
                 } else {
@@ -78,7 +79,7 @@ export default function _controller(router: express.Router) {
         res.send()
     })
     //login/out
-    router.post('/login', passport.authenticate("challenge", {session: false}), (req, res) => {
+    router.post("/login", passport.authenticate("challenge", {session: false}), (req, res) => {
         //@ts-ignore
         res.cookie("authorization", `Bearer ${req.user.token}`)
         res.json("OK")
