@@ -2,6 +2,6 @@ import { IAppState } from "pro-web-common/dist/js/interfaces/state-manager/state
 import { IUserState } from "pro-web-common/dist/js/interfaces/state-manager/states/IUser"
 
 export interface IAllState {
-    app: IAppState
-    user: IUserState
+    App: IAppState
+    User: IUserState
 }

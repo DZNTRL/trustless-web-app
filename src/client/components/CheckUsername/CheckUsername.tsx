@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import Input from "./Input"
+import { IAllState } from "../../IAllState"
 
-const CheckUsername: React.FunctionComponent<{isLoading: boolean, result: boolean}> = ({isLoading, result}) => {
-    const _isLoading = () => isLoading ? "1" : "0"
-    const _hasResult = () => result !== null
-    const _result = () => result ? "1" : "0"
-    const resultStatus = () => !_hasResult() ? " " :  _result()
-    const getState = () => `${_isLoading()}${(resultStatus())}`
+
+const CheckUsername: React.FunctionComponent = () => {
+    const { isUnique, isLoading } = useSelector((state: IAllState) => {
+        return {
+            isUnique: state.User.usernameUnique,
+            //@ts-ignore
+            isLoading : state.App.loading
+        }
+    })
+    const [state, setState] = useState<string>("0 ")
     useEffect(() => {
-        setState(getState())
-    }, [isLoading, result])
-    const [state, setState] = useState<string>(getState())
+        const isUniqueHasValue = isUnique === null ? " " : isUnique === true ? "1" : "0"
+        setState(`${isLoading ? "1" : "0"}${isUniqueHasValue}`)
+    }, [isUnique, isLoading])
     switch(state) {
         case "0 ":
             return <><Input /> test</>

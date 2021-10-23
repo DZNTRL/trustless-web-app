@@ -1,5 +1,6 @@
 import React from "react"
-import { ComponentStory, ComponentMeta } from "@storybook/react"
+import { ComponentStory, ComponentMeta, storiesOf } from "@storybook/react"
+import App from "../../../client/App"
 
 import CheckUsername from "../../../client/components/CheckUsername/CheckUsername"
 
@@ -8,17 +9,5 @@ export default {
   component: CheckUsername
 } as ComponentMeta<typeof CheckUsername>
 
-const Template: ComponentStory<typeof CheckUsername> = (args) => <CheckUsername {...args} />
-
-export const IsReady = Template.bind({})
-IsReady.args = {
-  loading: false,
-  result: null
-}
-
-export const IsLoading = Template.bind({})
-IsLoading.args = {
-    loading: true,
-    result: null
-}
+const Template: ComponentStory<typeof CheckUsername> = (args) => <App><CheckUsername {...args} /></App>
 

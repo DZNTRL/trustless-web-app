@@ -10,11 +10,17 @@ import { Validators } from "pro-web-common/dist/js/validators"
 import Core from "pro-web-core"
 
 export default function _controller(router: express.Router) {
-    router.get("/user/unique/:username", async function(req, res, next) {
-        const user: IUser = req.app.get("userService")
-        const resp = await user.checkUsernameUnique(req.params.username)
-        res.json(resp)
-    })
+    router.get("/user/unique/:username",
+        validator.param("username").escape(),
+        validator.param("username").stripLow(false),
+        validator.param("username"),
+        async function(req, res, next) {
+            const user: IUser = req.app.get("userService")
+            const resp = await user.checkUsernameUnique(req.params.username)
+            console.log(resp)
+            res.json(resp)
+        }
+    )
     router.post("/user", function(req, res, next) {
         const username = req.body.username
         const publicKey = req.body.publicKey
