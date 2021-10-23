@@ -4,16 +4,23 @@ import ReactDOMServer from "react-dom/server"
 import passport from "passport"
 import * as validator from "express-validator"
 import { authenticateToken, verifyNoToken} from "../../utils"
-import { IUser } from "pro-web-core"
+import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
 import { ResponseMessages } from "pro-web-core/dist/js/enums/ResponseMessages"
+import { Validators } from "pro-web-common/dist/js/validators"
 import Core from "pro-web-core"
 
 export default function _controller(router: express.Router) {
-    router.get("/user/unique/:username", async function(req, res, next) {
-        const user: IUser = req.app.get("userService")
-        const resp = await user.checkUsernameUnique(req.params.username)
-        res.json(resp)
-    })
+    router.get("/user/unique/:username",
+        validator.param("username").escape(),
+        validator.param("username").stripLow(false),
+        validator.param("username"),
+        async function(req, res, next) {
+            const user: IUser = req.app.get("userService")
+            const resp = await user.checkUsernameUnique(req.params.username)
+            console.log(resp)
+            res.json(resp)
+        }
+    )
     router.post("/user", function(req, res, next) {
         const username = req.body.username
         const publicKey = req.body.publicKey
@@ -29,7 +36,7 @@ export default function _controller(router: express.Router) {
         validator.param("username").stripLow(false),
         validator.param("username")
             .custom(async username => {
-                const result = await Core.Validators.username.validate(username)
+                const result = await Validators.username.validate(username)
                 if(result !== username) {
                     Promise.reject(result.toString())
                 } else {
@@ -57,7 +64,8 @@ export default function _controller(router: express.Router) {
                 return res.json(resp)
             }
             res.json(challenge)
-    })
+        }
+    )
     router.get("/profile", authenticateToken, function(req, res, next) {
         res.json({auth: true})
     })
@@ -77,7 +85,7 @@ export default function _controller(router: express.Router) {
         res.send()
     })
     //login/out
-    router.post('/login', passport.authenticate("challenge", {session: false}), (req, res) => {
+    router.post("/login", passport.authenticate("challenge", {session: false}), (req, res) => {
         //@ts-ignore
         res.cookie("authorization", `Bearer ${req.user.token}`)
         res.json("OK")
@@ -88,6 +96,9 @@ export default function _controller(router: express.Router) {
         res.json("OK")
     })
 
+    router.get("/logout", function(req, res, next) {
+        res.json("OK")
+    })
     //login/out
 
 };
