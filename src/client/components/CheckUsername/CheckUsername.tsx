@@ -16,6 +16,7 @@ const CheckUsername: React.FunctionComponent = () => {
     useEffect(() => {
         const isUniqueHasValue = isUnique === null ? " " : isUnique === true ? "1" : "0"
         setState(`${isLoading ? "1" : "0"}${isUniqueHasValue}`)
+        
     }, [isUnique, isLoading])
     switch(state) {
         case "0 ":

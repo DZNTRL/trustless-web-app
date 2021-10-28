@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Tabs, Tab, Form, Button } from "react-bootstrap"
-import StateManager from "pro-web-app-cli-state-manager"
+import { StateManager } from "pro-web-app-cli-state-manager"
 import CheckUsername from "../pages/Checkusername"
 import PublicKey from "../components/PublicKey"
 import { UserServiceContext } from "../contexts/userService"
@@ -13,7 +13,7 @@ const GettingIn: React.FunctionComponent = () => {
     const { loading, challenge }  = useSelector((state: IAllState) => ({loading, challenge}))
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(StateManager.actions.user(userSvc))
+        dispatch(StateManager.actions.user(userSvc).createUser())
     }
     return <>
         <Tabs defaultActiveKey="login" className="mb3">
