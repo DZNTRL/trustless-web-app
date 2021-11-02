@@ -8,8 +8,12 @@ import express from "express"
 import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
 
 export function getJWT(request) {
-  const authHeader = request.cookies["authorization"]
-  return authHeader
+  try { 
+    let authHeader = request.cookies["authorization"].split("Bearer ")[1]
+    return authHeader  
+  } catch {
+    return null
+  }
 }
 
 export function generateAccessToken(user: IUser, secret: string) {
@@ -30,10 +34,9 @@ export function authenticateToken(req, res, next) {
 
 export function verifyNoToken(req, res, next) {
   const token = getJWT(req)
-  console.log("verify no token", token)
   if(token) {
-    res.statusCode = 400
-    return res.send("")
+    res.statusCode = 304
+    return res.redirect("/session-board")
   } else {
     next()
   }
@@ -48,7 +51,7 @@ export function setupJwtAuth() {
       console.log("result", result)
       return result
     },
-    aud: "http://localhost"
+    aud: "http://localhost:3000"
   }
   const verify = (jwtPayload, done: (err, user, info) => void) => {
     console.log("in verify jwt")

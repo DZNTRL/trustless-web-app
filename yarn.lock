@@ -4552,7 +4552,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-to-clipboard@^3.3.1:
+copy-to-clipboard@^3, copy-to-clipboard@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
   integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
@@ -9939,41 +9939,65 @@ prismjs@^1.21.0, prismjs@~1.25.0:
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
   integrity sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==
 
-pro-web-app-cli-api-service@^1.0.0:
-  version "1.0.0"
-  resolved "http://localhost:4873/pro-web-app-cli-api-service/-/pro-web-app-cli-api-service-1.0.0.tgz#e5f5a2dd326a4e87dc8975dffee365e0b0a62f4e"
-  integrity sha512-TRfhWs4XDiryyy6wr2+UBulmlOFIliDrI6nd0N1ZAv5M4mdwlo4zhCIrCRH3O10P7rs/4GhT4OpAgNnjXTZBqA==
+pro-web-app-cli-api-service@1.0.8:
+  version "1.0.8"
+  resolved "http://localhost:4873/pro-web-app-cli-api-service/-/pro-web-app-cli-api-service-1.0.8.tgz#32d285c95cd5470f58bdfcc95d014a0f65f705eb"
+  integrity sha512-5Qr4HrBeHJqKQE/dDhmG0RlC4BCXPQp8Xt0ZC79JKrpGk7nhJKMZJiUNZM70kRDKd+iEi4kbSrxJkwLywgkPNg==
   dependencies:
     axios "^0.22.0"
-    pro-web-common "1.0.0"
-    pro-web-core "1.0.0"
+    pro-web-common "1.0.4"
+    pro-web-core "1.0.2"
 
-pro-web-app-cli-state-manager@^1.0.0:
-  version "1.0.0"
-  resolved "http://localhost:4873/pro-web-app-cli-state-manager/-/pro-web-app-cli-state-manager-1.0.0.tgz#56446b38aca7a348a7e69d488728b569c7096ba5"
-  integrity sha512-bVqu77ZIlYbCu467adPArRzYTjrdq3AQVYPiQtJAhTlpUghQ5F/Hv0SQJ/EqpU+/CYkZblEvcre+K6fO8ht91Q==
+pro-web-app-cli-state-manager@1.0.16:
+  version "1.0.16"
+  resolved "http://localhost:4873/pro-web-app-cli-state-manager/-/pro-web-app-cli-state-manager-1.0.16.tgz#eaf13f27283e371f3d852ccf7618e81511f56bfb"
+  integrity sha512-wh2a87uA8dX81up2D56L60FPxcroMZFx3GOUa96CwvcyahPmsSXb/eCRTxFpq+XOp7F9TBZkXwXbUVvjrx/l9w==
   dependencies:
-    pro-web-app-cli-api-service "^1.0.0"
-    pro-web-common "1.0.0"
-    pro-web-core "1.0.0"
+    pro-web-app-cli-api-service "1.0.8"
+    pro-web-common "1.0.5"
     redux "^4.1.1"
+    redux-thunk "^2.4.0"
 
-pro-web-common@1.0.0, pro-web-common@^1.0.0, pro-web-common@pro-web-common:
-  version "1.0.0"
-  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.0.tgz#f8ebd59fafcb0d2bf70c14ceb48e35fe5e07c021"
-  integrity sha512-XVHHdOaRLvCGdGFoiChNm94TeXzw/SHbeAeXpwbgBqP3P1KfpMOf4ajtbIFSIpOxKDB/cpD9RmCWAjE2zWfZCA==
+pro-web-common@1.0.4:
+  version "1.0.4"
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.4.tgz#2e58988b20c9cd5317756b13d6107e53eb71a1f8"
+  integrity sha512-8lwqdh9aazUNn6WZf+UlDK394GwK7tL4AIOeva6d6Z1QlOxY8KSVw8WRpCHHGUnauDp3//1rSyNtyIDHTEeagA==
+  dependencies:
+    mysql2 "^2.3.2"
+    yup "^0.32.11"
 
-pro-web-core@1.0.0, pro-web-core@1.0.1:
-  version "1.0.0"
-  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.0.tgz#5948bc30e2d85c1af62f219f60b4ca34a3b44820"
-  integrity sha512-OwXvhPvCsrvJ5yZ4vsqxGqvMNCx0ih/MeeiHTQIRlBlQmiinv+4LCXbfL2WaFnXgdF4uyQKuVpmL8vDPeEGa0A==
+pro-web-common@1.0.5:
+  version "1.0.5"
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.5.tgz#3969c60f2176e557a0427778f3cfc621db548217"
+  integrity sha512-/c+ae7VD+BoRW3/kupfz+5mQTTjDK1NZafaU+BTfw5CtsrIyryUQkc0P/HEevX65511fpB9EpRXt8WJxEyiAUQ==
+  dependencies:
+    mysql2 "^2.3.2"
+    yup "^0.32.11"
+
+pro-web-core@1.0.2:
+  version "1.0.2"
+  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.2.tgz#859c07c3d8cc4f13230cd2c754d83aef55920980"
+  integrity sha512-sfmk628V5mGDqK58023m4HYt6E5uVdynylLPKhYu+uON0s1KoBhRI/L80OTnfrfpKYijuOz9lwl6awAqxlLpqA==
   dependencies:
     async "^3.2.1"
     bip39 "^3.0.4"
     config "^3.3.6"
     mysql2 "^2.3.0"
     openpgp "^5.0.0-5"
-    pro-web-common pro-web-common
+    pro-web-common "1.0.4"
+    yup "^0.32.9"
+
+pro-web-core@1.0.7:
+  version "1.0.7"
+  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.7.tgz#c0722bc95c5971e748b1cc918a5b8b0b2b68cec4"
+  integrity sha512-aZBZPgqqOgjM/6aq3MGyx+NjB9bVLe8TzYTeNkNNI1a4mluXOXIGCA8uFAzD2jS4qGHRBmuBuHmgUhoPgDFsBg==
+  dependencies:
+    async "^3.2.1"
+    bip39 "^3.0.4"
+    config "^3.3.6"
+    mysql2 "^2.3.0"
+    openpgp "^5.0.0-5"
+    pro-web-common "1.0.4"
     yup "^0.32.9"
 
 process-nextick-args@~2.0.0:
@@ -10048,7 +10072,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10394,6 +10418,14 @@ react-colorful@^5.1.2:
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.5.0.tgz#8359f218984a927095477a190ab9927eaf865c0c"
   integrity sha512-BuzrlrM0ylg7coPkXOrRqlf2BgHLw5L44sybbr9Lg4xy7w9e5N7fGYbojOO0s8J0nvrM3PERN2rVFkvSa24lnQ==
 
+react-copy-to-clipboard@^5.0.4:
+  version "5.0.4"
+  resolved "http://localhost:4873/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.4.tgz#42ec519b03eb9413b118af92d1780c403a5f19bf"
+  integrity sha512-IeVAiNVKjSPeGax/Gmkqfa/+PuMTBhutEvFUaMQLwE2tS0EXrAdgOpWDX26bWTXF3HrioorR7lr08NqeYUWQCQ==
+  dependencies:
+    copy-to-clipboard "^3"
+    prop-types "^15.5.8"
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -10660,6 +10692,11 @@ recursive-readdir@2.2.2:
   integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
   dependencies:
     minimatch "3.0.4"
+
+redux-thunk@^2.4.0:
+  version "2.4.0"
+  resolved "http://localhost:4873/redux-thunk/-/redux-thunk-2.4.0.tgz#ac89e1d6b9bdb9ee49ce69a69071be41bbd82d67"
+  integrity sha512-/y6ZKQNU/0u8Bm7ROLq9Pt/7lU93cT0IucYMrubo89ENjxPa7i8pqLKu6V4X7/TvYovQ6x01unTeyeZ9lgXiTA==
 
 redux@^4.0.0, redux@^4.1.1:
   version "4.1.1"
@@ -12990,7 +13027,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-yup@^0.32.9:
+yup@^0.32.11, yup@^0.32.9:
   version "0.32.11"
   resolved "http://localhost:4873/yup/-/yup-0.32.11.tgz#d67fb83eefa4698607982e63f7ca4c5ed3cf18c5"
   integrity sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==

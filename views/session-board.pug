@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .head-bg
+    .head-bg-img
+    .head-bg-content
+      h1= title
+      p Donec in rhoncus tortor. Sed tristique auctor ligula vel viverra
+      div#root!= content
+  script(src="/public/dist/Index.js")

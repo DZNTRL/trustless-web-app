@@ -24,7 +24,8 @@ export function createApp(core: IProWebCore) {
   app.set("views", path.resolve(__dirname, "../../views"))
   app.set("view engine", "pug")
   app.set("pool", createPool(dbConfig))
-  app.set("userService", new core.Service.User(app.get("pool")))
+  app.set("userRepo", new core.Repo.User(app.get("pool")))
+  app.set("userService", new core.Service.User(app.get("pool"), app.get("userRepo"), console.log))
 
   app.use(logger("dev"))
   app.use(express.json())
