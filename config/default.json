@@ -3,7 +3,7 @@
     "db": {
         "host": "localhost",
         "user": "pro-web-user",
-        "password": "DBcpIZWXXF",
+        "password": "",
         "database": "proweb",
         "socketPath": "/var/run/mysqld/mysqld.sock"
     },
