@@ -1,7 +1,6 @@
 {
   "name": "pro-web-app",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
   "main": "build/server/app.js",
   "scripts": {
     "start": "node ./bin/www",
