@@ -1,8 +1,8 @@
 import React from "react"
 import { ComponentStory, ComponentMeta, storiesOf } from "@storybook/react"
-import App from "../../../client/App"
+import App from "pro-web-app-cli-components/dist/js/App"
 
-import CheckUsername from "../../../client/components/CheckUsername/CheckUsername"
+import CheckUsername from "pro-web-app-cli-components/src/components/CheckUsername/CheckUsername"
 
 export default {
   title: "Check Username",

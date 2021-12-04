@@ -5,9 +5,9 @@ import passport from "passport"
 import * as validator from "express-validator"
 import { authenticateToken, verifyNoToken} from "../../utils"
 import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
-import { ResponseMessages } from "pro-web-core/dist/js/enums/ResponseMessages"
+import { Response } from "pro-web-common/dist/js/Response"
+import { ResponseMessages } from "pro-web-common/dist/js/enums/ResponseMessages"
 import { Validators } from "pro-web-common/dist/js/validators"
-import Core from "pro-web-core"
 
 export default function _controller(router: express.Router) {
     router.get("/user/unique/:username",
@@ -47,9 +47,9 @@ export default function _controller(router: express.Router) {
         async function(req, res, next) {
             //@ts-ignore
             const errors = validator.validationResult(req).errors
-            const resp = new Core.Response(null, "", true)
+            const resp = new Response(null, "", true)
             if(errors.length > 0) {
-                return res.json(new Core.Response(null, errors.join(","), true))
+                return res.json(new Response(null, errors.join(","), true))
             }
             const user: IUser = req.app.get("userService")
             var challenge

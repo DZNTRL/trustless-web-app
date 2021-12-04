@@ -29,6 +29,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pro-web-app-cli-api-service": "^1.0.9",
+    "pro-web-app-cli-components": "^1.0.4",
     "pro-web-app-cli-state-manager": "^1.0.18",
     "pro-web-common": "1.0.6",
     "pro-web-core": "^1.0.9",
