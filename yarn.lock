@@ -4623,7 +4623,7 @@ copy-descriptor@^0.1.0:
   resolved "http://localhost:4873/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-to-clipboard@^3.3.1:
+copy-to-clipboard@^3, copy-to-clipboard@^3.3.1:
   version "3.3.1"
   resolved "http://localhost:4873/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
   integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
@@ -9965,24 +9965,25 @@ prismjs@^1.21.0, prismjs@~1.25.0:
   resolved "http://localhost:4873/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
   integrity sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==
 
-pro-web-app-cli-api-service@^1.0.9:
-  version "1.0.9"
-  resolved "http://localhost:4873/pro-web-app-cli-api-service/-/pro-web-app-cli-api-service-1.0.9.tgz#36501d400ad0292304b81abe0de37769a6f8ea49"
-  integrity sha512-vv2F5F2fQi4MULeexH2pNhgaGyT0J9iG/I2m+Ih7SrRXC5RH7gAo8FwEcgBZRr9txWv/PxuYdAqCDypzHgFUsA==
+pro-web-app-cli-api-service@^1.0.10:
+  version "1.0.10"
+  resolved "http://localhost:4873/pro-web-app-cli-api-service/-/pro-web-app-cli-api-service-1.0.10.tgz#4228bfa90157a799bd4093a377436050a594b9ae"
+  integrity sha512-V+NCLWDijmKEu+Hto/mneXRTFzXI2Dh0kOBDhTMWTL305mpKDZ2cQXAHTcEYzOUfeeVrAIAjz4GEwsXtYLsK5g==
   dependencies:
     axios "^0.22.0"
     pro-web-common "^1.0.6"
 
-pro-web-app-cli-components@^1.0.4:
-  version "1.0.4"
-  resolved "http://localhost:4873/pro-web-app-cli-components/-/pro-web-app-cli-components-1.0.4.tgz#f44081aa1f1d343a4aea2e472e8906f4a08501fc"
-  integrity sha512-37veejVSzTIRY7Na9uChUgSXqUP/msuX6osUSWD55JM7NRPa3PEeicjoeR8qMQo7ekN+auazrw3yFoqmfcK0mQ==
+pro-web-app-cli-components@^1.0.30:
+  version "1.0.30"
+  resolved "http://localhost:4873/pro-web-app-cli-components/-/pro-web-app-cli-components-1.0.30.tgz#e661fd78c83a12c8ec86b8098b60d46d62ac3151"
+  integrity sha512-8aZYyHPko+7X73ltTsy+kTPlWYCrvPF3rdK0NLWhEH8w3yx4nwJjd3AV3z9YcWjCSPUMOdwFrk4oW8mz55839g==
   dependencies:
-    pro-web-app-cli-api-service "^1.0.9"
-    pro-web-app-cli-state-manager "^1.0.18"
-    pro-web-common "^1.0.6"
+    pro-web-app-cli-api-service "^1.0.10"
+    pro-web-app-cli-state-manager "^1.0.20"
+    pro-web-common "^1.0.17"
     react "^17.0.2"
     react-bootstrap "^2.0.3"
+    react-copy-to-clipboard "^5.0.4"
     react-dom "^17.0.2"
     react-redux "^7.2.6"
     typescript "^4.5.2"
@@ -9996,7 +9997,32 @@ pro-web-app-cli-state-manager@^1.0.18:
     redux "^4.1.1"
     redux-thunk "^2.4.0"
 
-pro-web-common@1.0.6, pro-web-common@^1.0.6:
+pro-web-app-cli-state-manager@^1.0.20:
+  version "1.0.20"
+  resolved "http://localhost:4873/pro-web-app-cli-state-manager/-/pro-web-app-cli-state-manager-1.0.20.tgz#50960a7157fd6484bf0877c23799c4e8b6af68de"
+  integrity sha512-JoMp0WglR4fCjy5KHjrQsOGfeAcp/GFx7E4Pt75nwwX6LauKmDC88ZL5HTixrRrD1LD1cwtvkuLQONiocq6SFg==
+  dependencies:
+    pro-web-common "^1.0.18"
+    redux "^4.1.1"
+    redux-thunk "^2.4.0"
+
+pro-web-common@^1.0.17:
+  version "1.0.17"
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.17.tgz#5d9c14836f01a040d0be80d4cccc64e479f6cf92"
+  integrity sha512-sIIjE9mNURFXJVVbmqE27LurFLlifBYXXN5uJ3jWIeq4qAHKWUPEp4gYzvTazuQaNkZLHCaoqQ0nZiDQN5xe0Q==
+  dependencies:
+    mysql2 "^2.3.2"
+    yup "^0.32.11"
+
+pro-web-common@^1.0.18:
+  version "1.0.18"
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.18.tgz#22eaa121504a111f311f7242d3ea7050e85eef1b"
+  integrity sha512-Fpekei10Hhz7b4IW5xhV1jXPxNKqoIJAdNuBn18Lz0ecg1zYXJ8nlnwbNH2J9OZajwCqJbcIqy/iCJVl9Mts0Q==
+  dependencies:
+    mysql2 "^2.3.2"
+    yup "^0.32.11"
+
+pro-web-common@^1.0.6:
   version "1.0.6"
   resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.6.tgz#96b1420b15080cf4e7f269762f3a7533b6bffc19"
   integrity sha512-n+5eQNhdITCCtUgg7N7/Ct3f9TG7mA3iwdONHvmqtaJDODsDy4oCcTdFdX48uJ2j3/konltiHF3df6UTxCg0Bw==
@@ -10004,17 +10030,26 @@ pro-web-common@1.0.6, pro-web-common@^1.0.6:
     mysql2 "^2.3.2"
     yup "^0.32.11"
 
-pro-web-core@^1.0.9:
+pro-web-common@^1.0.9:
   version "1.0.9"
-  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.9.tgz#c42bc38cf727b2063b8ca5bff1402a7dfa145375"
-  integrity sha512-1t0aGw9wxE4OafCoC6C+zon05RT2+j4XFGwuaVl+RkD4oNNrfN5aWO7KcoVT2vKWQguONWHsDJlgCkXDrwPaug==
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.9.tgz#289eb2e98447ea5b3f4081f5c2a109d296cd4a71"
+  integrity sha512-FBTqzgVFYGCyDlz2wMazYcRSD1in3qRza4UwVw3ak0Kkz+LwUdpzRt9aG4CRZqyeDxmZ/3zYT4asNVT14g0PUQ==
+  dependencies:
+    mysql2 "^2.3.2"
+    yup "^0.32.11"
+
+pro-web-core@^1.0.29:
+  version "1.0.29"
+  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.29.tgz#28eee78c5323c94e07fad93b78ac839004cee8d7"
+  integrity sha512-v5Yn/Z4TCOQBBh0t55l9IFVdTprFqtZjNXCHKKNpU3eleH2pk/ZPpUhxaduDx9OAPOH6thB8Z37IXWGESUnqnw==
   dependencies:
     async "^3.2.1"
     bip39 "^3.0.4"
     config "^3.3.6"
     mysql2 "^2.3.0"
     openpgp "^5.0.0-5"
-    pro-web-common "^1.0.6"
+    pro-web-common "^1.0.9"
+    vybe-common "^1.0.60"
     yup "^0.32.9"
 
 process-nextick-args@~2.0.0:
@@ -10089,7 +10124,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "http://localhost:4873/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10434,6 +10469,14 @@ react-colorful@^5.1.2:
   version "5.5.1"
   resolved "http://localhost:4873/react-colorful/-/react-colorful-5.5.1.tgz#29d9c4e496f2ca784dd2bb5053a3a4340cfaf784"
   integrity sha512-M1TJH2X3RXEt12sWkpa6hLc/bbYS0H6F4rIqjQZ+RxNBstpY67d9TrFXtqdZwhpmBXcCwEi7stKqFue3ZRkiOg==
+
+react-copy-to-clipboard@^5.0.4:
+  version "5.0.4"
+  resolved "http://localhost:4873/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.4.tgz#42ec519b03eb9413b118af92d1780c403a5f19bf"
+  integrity sha512-IeVAiNVKjSPeGax/Gmkqfa/+PuMTBhutEvFUaMQLwE2tS0EXrAdgOpWDX26bWTXF3HrioorR7lr08NqeYUWQCQ==
+  dependencies:
+    copy-to-clipboard "^3"
+    prop-types "^15.5.8"
 
 react-dev-utils@^11.0.4:
   version "11.0.4"
@@ -12687,6 +12730,14 @@ void-elements@^3.1.0:
   version "3.1.0"
   resolved "http://localhost:4873/void-elements/-/void-elements-3.1.0.tgz#614f7fbf8d801f0bb5f0661f5b2f5785750e4f09"
   integrity sha1-YU9/v42AHwu18GYfWy9XhXUOTwk=
+
+vybe-common@^1.0.60:
+  version "1.0.105"
+  resolved "http://localhost:4873/vybe-common/-/vybe-common-1.0.105.tgz#15683c1765b95d7796a95a2c827041fdd1c1a0f7"
+  integrity sha512-R+acWlsfvr6AYWMEABgLdbOvQmnpkTvr+hNeIMRu82GKPv+uToEynSINg/5lEaEzaWgaL3FXQhFkLFC1erPt+g==
+  dependencies:
+    mysql2 "^2.3.2"
+    yup "^0.32.11"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"

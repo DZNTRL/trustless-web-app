@@ -17,15 +17,15 @@ const dbConfig = config.get("db")
 const options = {
   explorer: true
 }
+const app = express()
 
-export function createApp(core: IProWebCore) {  
-  const app = express()
+export async function createApp(core: IProWebCore) {  
+  const pool = await createPool(dbConfig)
   // view engine setup
   app.set("views", path.resolve(__dirname, "../../views"))
   app.set("view engine", "pug")
-  app.set("pool", createPool(dbConfig))
-  app.set("userService", new core.Service.User(app.get("pool")))
-
+  app.set("userRepo", new core.Repo.User({pool}))
+  app.set("userService", new core.Service.User(app.get("userRepo")))
   app.use(logger("dev"))
   app.use(express.json())
   app.use(express.urlencoded({ extended: false }))

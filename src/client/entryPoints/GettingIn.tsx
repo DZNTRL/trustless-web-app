@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import GettingIn from "pro-web-app-cli-components/dist/js/sections/GettingIn"
-import App from "pro-web-app-cli-components/dist/js/App"
+import GettingIn from "../components/GettingIn"
 
-ReactDOM.hydrate(<App><GettingIn /></App>, document.getElementById("root"))
+ReactDOM.hydrate(<GettingIn />, document.getElementById("root"))

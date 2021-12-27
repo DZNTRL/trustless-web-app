@@ -6,6 +6,7 @@ import App from "pro-web-app-cli-components/dist/js/App"
 import SessionBoard from "pro-web-app-cli-components/dist/js/sections/SessionBoard"
 import { verifyNoToken } from "../utils"
 import request from "request"
+import GettingIn from "../../client/components/GettingIn"
 
 export default function _controller(router: express.Router) {
     /* GET home page. */
@@ -17,11 +18,11 @@ export default function _controller(router: express.Router) {
         })
     })
     router.get("/getting-in", verifyNoToken, function(req, res, next) {
-        //@ts-ignore
+            //@ts-ignore        
         if(req.user) {
             return res.redirect("/")
         }
-        const app = ReactDOMServer.renderToString(<App />)
+        const app = ReactDOMServer.renderToString(<GettingIn />)
         res.render("getting-in", {
             title: "Getting In",
             content: app

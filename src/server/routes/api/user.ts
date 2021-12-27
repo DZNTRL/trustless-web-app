@@ -48,6 +48,7 @@ export default function _controller(router: express.Router) {
             //@ts-ignore
             const errors = validator.validationResult(req).errors
             const resp = new Response(null, "", true)
+
             if(errors.length > 0) {
                 return res.json(new Response(null, errors.join(","), true))
             }
@@ -56,6 +57,7 @@ export default function _controller(router: express.Router) {
             try {
                 challenge = await user.requestLogin(req.params.username)                
             } catch(e) {
+                console.log("error while request login", e)
                 res.statusCode = 500
                 return res.json(resp)
             }
@@ -85,18 +87,15 @@ export default function _controller(router: express.Router) {
         res.send()
     })
     //login/out
-    router.post("/login", passport.authenticate("challenge", {session: false}), (req, res) => {
+    router.post("/login", passport.authenticate("challenge"), (req, res) => {
         //@ts-ignore
         res.cookie("authorization", `Bearer ${req.user.token}`)
         res.json("OK")
     })
 
     router.get("/logout", passport.authenticate("jwt"), function(req, res, next) {
+        // change the logout time with the service, the clear the cookie
         res.clearCookie("authorization")
-        res.json("OK")
-    })
-
-    router.get("/logout", function(req, res, next) {
         res.json("OK")
     })
     //login/out

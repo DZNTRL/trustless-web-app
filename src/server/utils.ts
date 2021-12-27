@@ -9,7 +9,8 @@ import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
 
 export function getJWT(request) {
   const authHeader = request.cookies["authorization"]
-  return authHeader
+  if(!authHeader) return
+  return authHeader.split(" ")[1]
 }
 
 export function generateAccessToken(user: IUser, secret: string) {
@@ -30,13 +31,14 @@ export function authenticateToken(req, res, next) {
 
 export function verifyNoToken(req, res, next) {
   const token = getJWT(req)
-  console.log("verify no token", token)
-  if(token) {
-    res.statusCode = 400
-    return res.send("")
-  } else {
-    next()
-  }
+  jwt.verify(token, process.env.JWT_SECRET as string, (err:any, req: express.Request, user: any) => {
+    if (err) {
+      // if theres a cookie and an error, remove the cookie
+      res.clearCookie("authorization")
+      return next()
+    }
+    res.sendStatus(403)
+  })
 }
 
 export function setupJwtAuth() {
@@ -45,13 +47,11 @@ export function setupJwtAuth() {
     secretOrKey: process.env.JWT_SECRET,
     jwtFromRequest: (request) => {
       const result = getJWT(request)
-      console.log("result", result)
       return result
     },
     aud: "http://localhost"
   }
   const verify = (jwtPayload, done: (err, user, info) => void) => {
-    console.log("in verify jwt")
     if(!jwtPayload.data) {
       return done(null, null, null)
     }
