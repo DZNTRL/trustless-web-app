@@ -6,6 +6,8 @@ import LocalStrategy from "passport-local"
 import CookieParser from "cookie-parser"
 import express from "express"
 import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
+import { IResponse } from "pro-web-common/dist/js/interfaces/IResponse"
+import * as validator from "express-validator"
 
 export function getJWT(request) {
   const authHeader = request.cookies["authorization"]
@@ -21,8 +23,9 @@ export function generateAccessToken(user: IUser, secret: string) {
 export function authenticateToken(req, res, next) {
   const token = getJWT(req)
   if (!token) return res.sendStatus(401)
-  jwt.verify(token, process.env.TOKEN_SECRET as string, (req: express.Request, err: any, user: any) => {
+  jwt.verify(token, process.env.JWT_SECRET as string, (req: express.Request, err: any, user: any) => {
     if (err) return res.sendStatus(403)
+    console.log("auth args",req.body, req)
     //@ts-ignore
     req.user = user
     next()
@@ -37,7 +40,7 @@ export function verifyNoToken(req, res, next) {
       res.clearCookie("authorization")
       return next()
     }
-    res.sendStatus(403)
+    res.redirect("/session-board")
   })
 }
 
@@ -68,12 +71,14 @@ export function setupJwtAuth() {
 export function setupPKAuth(app: express.Application) {
   const localStrategy = new LocalStrategy(
     async function(username, challenge, done) {
+      console.log("is pkauth verify getting called?")
       const userService: IUser = app.get("userService")
       const challengeResp = await userService.login(username, challenge)
+      console.log("challengeResp", challengeResp)
       if(challengeResp.IsError) {
         return done(challengeResp.Message, null)
       }
-      if(challengeResp.Data === false) {
+      if(challengeResp.Data === null) {
         return done(null, { token: null })
       }
       const userResp = await userService.get(username)
@@ -83,7 +88,7 @@ export function setupPKAuth(app: express.Application) {
         dotenv.config()
         //@ts-ignore
         const token = generateAccessToken(userResp.Data, process.env.JWT_SECRET)
-        return done(null, { token })  
+        return done(null, { token, user: userResp.Data })  
       }
     }
   )
@@ -95,4 +100,14 @@ export function setupCookieParser() {
   dotenv.config()
   const options = config.get("cookieSettings")
  return CookieParser(process.env.COOKIE_SIGNER, options)
+}
+
+export function reportErrors<T>(response: IResponse<T>, req: express.Request, res: express.Response) {
+    //@ts-ignore
+    const errors = validator.validationResult(req).errors
+    if(errors.length) {        
+        console.log(errors)
+        response.IsError = true
+        response.Message = errors.map(x => `${x.param}: ${x.msg}`)
+    }
 }

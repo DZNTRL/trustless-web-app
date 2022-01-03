@@ -3,7 +3,7 @@ import React from "react"
 import passport from "passport"
 import ReactDOMServer from "react-dom/server"
 import App from "pro-web-app-cli-components/dist/js/App"
-import SessionBoard from "pro-web-app-cli-components/dist/js/sections/SessionBoard"
+import SessionBoard from "../../client/components/SessionBoard"
 import { verifyNoToken } from "../utils"
 import request from "request"
 import GettingIn from "../../client/components/GettingIn"
@@ -31,7 +31,7 @@ export default function _controller(router: express.Router) {
     router.get("/session-board", passport.authenticate("jwt", { failureRedirect: "/getting-in"}), function(req, res, next) {
         const app = ReactDOMServer.renderToString(<SessionBoard />)
         res.render("session-board", {
-            title: "Session Messenger Board",
+            title: "User Session Info",
             content: app
         })
     })

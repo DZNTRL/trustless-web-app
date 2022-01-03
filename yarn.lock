@@ -6841,6 +6841,13 @@ history@^5.1.0:
   dependencies:
     "@babel/runtime" "^7.7.6"
 
+history@^5.2.0:
+  version "5.2.0"
+  resolved "http://localhost:4873/history/-/history-5.2.0.tgz#7cdd31cf9bac3c5d31f09c231c9928fad0007b7c"
+  integrity sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "http://localhost:4873/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -9965,91 +9972,68 @@ prismjs@^1.21.0, prismjs@~1.25.0:
   resolved "http://localhost:4873/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
   integrity sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==
 
-pro-web-app-cli-api-service@^1.0.10:
-  version "1.0.10"
-  resolved "http://localhost:4873/pro-web-app-cli-api-service/-/pro-web-app-cli-api-service-1.0.10.tgz#4228bfa90157a799bd4093a377436050a594b9ae"
-  integrity sha512-V+NCLWDijmKEu+Hto/mneXRTFzXI2Dh0kOBDhTMWTL305mpKDZ2cQXAHTcEYzOUfeeVrAIAjz4GEwsXtYLsK5g==
+pro-web-app-cli-api-service@^1.0.20:
+  version "1.0.20"
+  resolved "http://localhost:4873/pro-web-app-cli-api-service/-/pro-web-app-cli-api-service-1.0.20.tgz#75b7f4b08cab36b62011fec6c301f4fdfe10d4d9"
+  integrity sha512-s4n90wB86lXCZ1xDaHb/zwHyrpZBWWrAzatFiwYUHcF9N1MYGn3MMmsG6jTDm0sauefTfNtHvdwuJRRZ+ObZxQ==
   dependencies:
     axios "^0.22.0"
-    pro-web-common "^1.0.6"
+    pro-web-common "^1.0.33"
 
-pro-web-app-cli-components@^1.0.30:
-  version "1.0.30"
-  resolved "http://localhost:4873/pro-web-app-cli-components/-/pro-web-app-cli-components-1.0.30.tgz#e661fd78c83a12c8ec86b8098b60d46d62ac3151"
-  integrity sha512-8aZYyHPko+7X73ltTsy+kTPlWYCrvPF3rdK0NLWhEH8w3yx4nwJjd3AV3z9YcWjCSPUMOdwFrk4oW8mz55839g==
+pro-web-app-cli-components@^1.0.96:
+  version "1.0.96"
+  resolved "http://localhost:4873/pro-web-app-cli-components/-/pro-web-app-cli-components-1.0.96.tgz#943dd34272c502d7f40004aa4c71adff281b16e8"
+  integrity sha512-Lo3qOXgLqLpHoir4mnej0clmswEYeTqU+RlpMlJqNlcQyQiNbMrc8o3tvdUzEr+agIrAhr0srZbpNl/x0OBz/w==
   dependencies:
-    pro-web-app-cli-api-service "^1.0.10"
-    pro-web-app-cli-state-manager "^1.0.20"
-    pro-web-common "^1.0.17"
+    pro-web-app-cli-api-service "^1.0.20"
+    pro-web-app-cli-state-manager "^1.0.34"
+    pro-web-common "^1.0.33"
     react "^17.0.2"
     react-bootstrap "^2.0.3"
     react-copy-to-clipboard "^5.0.4"
     react-dom "^17.0.2"
     react-redux "^7.2.6"
+    react-router "^6.2.1"
+    react-router-dom "^6.2.1"
     typescript "^4.5.2"
 
-pro-web-app-cli-state-manager@^1.0.18:
-  version "1.0.18"
-  resolved "http://localhost:4873/pro-web-app-cli-state-manager/-/pro-web-app-cli-state-manager-1.0.18.tgz#e4c0d25bc0a5733c1ad5b61e13c0dcd90f65bc0e"
-  integrity sha512-gFOWi9SwnT6KPbKzgCRJWjmGYWoWjYFe/a49IQAIvfKqB2vZFJYhXxOIlTrAHiFVwsMIwSK1tdZddaFeqHV3GA==
+pro-web-app-cli-state-manager@^1.0.34:
+  version "1.0.34"
+  resolved "http://localhost:4873/pro-web-app-cli-state-manager/-/pro-web-app-cli-state-manager-1.0.34.tgz#c0c4749c4edc806f6b81b37f5026459837ceb023"
+  integrity sha512-nk25ZGQJC9LyopEXa3deHQnITeR2DBZjaF5AaFE6o/FjmLaCGYRe37GpGOothReFOXf1WttgxxRoCRz+OJxMiA==
   dependencies:
-    pro-web-common "^1.0.6"
+    pro-web-app-cli-api-service "^1.0.20"
+    pro-web-common "^1.0.34"
     redux "^4.1.1"
     redux-thunk "^2.4.0"
 
-pro-web-app-cli-state-manager@^1.0.20:
-  version "1.0.20"
-  resolved "http://localhost:4873/pro-web-app-cli-state-manager/-/pro-web-app-cli-state-manager-1.0.20.tgz#50960a7157fd6484bf0877c23799c4e8b6af68de"
-  integrity sha512-JoMp0WglR4fCjy5KHjrQsOGfeAcp/GFx7E4Pt75nwwX6LauKmDC88ZL5HTixrRrD1LD1cwtvkuLQONiocq6SFg==
-  dependencies:
-    pro-web-common "^1.0.18"
-    redux "^4.1.1"
-    redux-thunk "^2.4.0"
-
-pro-web-common@^1.0.17:
-  version "1.0.17"
-  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.17.tgz#5d9c14836f01a040d0be80d4cccc64e479f6cf92"
-  integrity sha512-sIIjE9mNURFXJVVbmqE27LurFLlifBYXXN5uJ3jWIeq4qAHKWUPEp4gYzvTazuQaNkZLHCaoqQ0nZiDQN5xe0Q==
+pro-web-common@^1.0.33:
+  version "1.0.33"
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.33.tgz#ec4e8cdcb00d5f2ca845505a0e4ddf12227be574"
+  integrity sha512-OPpV08COiGgEa1zcaot/h3eDPpabSE7rzidsQkxUg5bX4f2rKSAiTt1qwrZE3FxP+uyqdRgfWVx9vD0o/C/pPg==
   dependencies:
     mysql2 "^2.3.2"
     yup "^0.32.11"
 
-pro-web-common@^1.0.18:
-  version "1.0.18"
-  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.18.tgz#22eaa121504a111f311f7242d3ea7050e85eef1b"
-  integrity sha512-Fpekei10Hhz7b4IW5xhV1jXPxNKqoIJAdNuBn18Lz0ecg1zYXJ8nlnwbNH2J9OZajwCqJbcIqy/iCJVl9Mts0Q==
+pro-web-common@^1.0.34:
+  version "1.0.34"
+  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.34.tgz#91a2f9d4a5c9d864334b3896bdfc711af288a086"
+  integrity sha512-lzY1sta5jBg4cy+w1xvxHIlA+MR25C71iILR7vh9nwR4et+d0yCIlW8FdwHrrOVAWevKh85CC7v3rlOjDiUBaQ==
   dependencies:
     mysql2 "^2.3.2"
     yup "^0.32.11"
 
-pro-web-common@^1.0.6:
-  version "1.0.6"
-  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.6.tgz#96b1420b15080cf4e7f269762f3a7533b6bffc19"
-  integrity sha512-n+5eQNhdITCCtUgg7N7/Ct3f9TG7mA3iwdONHvmqtaJDODsDy4oCcTdFdX48uJ2j3/konltiHF3df6UTxCg0Bw==
-  dependencies:
-    mysql2 "^2.3.2"
-    yup "^0.32.11"
-
-pro-web-common@^1.0.9:
-  version "1.0.9"
-  resolved "http://localhost:4873/pro-web-common/-/pro-web-common-1.0.9.tgz#289eb2e98447ea5b3f4081f5c2a109d296cd4a71"
-  integrity sha512-FBTqzgVFYGCyDlz2wMazYcRSD1in3qRza4UwVw3ak0Kkz+LwUdpzRt9aG4CRZqyeDxmZ/3zYT4asNVT14g0PUQ==
-  dependencies:
-    mysql2 "^2.3.2"
-    yup "^0.32.11"
-
-pro-web-core@^1.0.29:
-  version "1.0.29"
-  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.29.tgz#28eee78c5323c94e07fad93b78ac839004cee8d7"
-  integrity sha512-v5Yn/Z4TCOQBBh0t55l9IFVdTprFqtZjNXCHKKNpU3eleH2pk/ZPpUhxaduDx9OAPOH6thB8Z37IXWGESUnqnw==
+pro-web-core@^1.0.34:
+  version "1.0.34"
+  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.34.tgz#1c5063bc3c8848ccdda10b9696ba0dc00dd06300"
+  integrity sha512-LhLYopt9eeYtXvSAVmuTyi2KB6vnAbMKO1VQnCIdQ7EivNvwEQVFzcNo2WuICfEMBfx0kJrxJ5uEzB0FUbdRuA==
   dependencies:
     async "^3.2.1"
     bip39 "^3.0.4"
     config "^3.3.6"
     mysql2 "^2.3.0"
     openpgp "^5.0.0-5"
-    pro-web-common "^1.0.9"
-    vybe-common "^1.0.60"
+    pro-web-common "^1.0.34"
     yup "^0.32.9"
 
 process-nextick-args@~2.0.0:
@@ -10642,12 +10626,27 @@ react-router-dom@^6.0.0:
     history "^5.1.0"
     react-router "6.0.2"
 
+react-router-dom@^6.2.1:
+  version "6.2.1"
+  resolved "http://localhost:4873/react-router-dom/-/react-router-dom-6.2.1.tgz#32ec81829152fbb8a7b045bf593a22eadf019bec"
+  integrity sha512-I6Zax+/TH/cZMDpj3/4Fl2eaNdcvoxxHoH1tYOREsQ22OKDYofGebrNm6CTPUcvLvZm63NL/vzCYdjf9CUhqmA==
+  dependencies:
+    history "^5.2.0"
+    react-router "6.2.1"
+
 react-router@6.0.2, react-router@^6.0.0:
   version "6.0.2"
   resolved "http://localhost:4873/react-router/-/react-router-6.0.2.tgz#bd2b0fa84fd1d152671e9f654d9c0b1f5a7c86da"
   integrity sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q==
   dependencies:
     history "^5.1.0"
+
+react-router@6.2.1, react-router@^6.2.1:
+  version "6.2.1"
+  resolved "http://localhost:4873/react-router/-/react-router-6.2.1.tgz#be2a97a6006ce1d9123c28934e604faef51448a3"
+  integrity sha512-2fG0udBtxou9lXtK97eJeET2ki5//UWfQSl1rlJ7quwe6jrktK9FCCc8dQb5QY6jAv3jua8bBQRhhDOM/kVRsg==
+  dependencies:
+    history "^5.2.0"
 
 react-sizeme@^3.0.1:
   version "3.0.2"
@@ -12730,14 +12729,6 @@ void-elements@^3.1.0:
   version "3.1.0"
   resolved "http://localhost:4873/void-elements/-/void-elements-3.1.0.tgz#614f7fbf8d801f0bb5f0661f5b2f5785750e4f09"
   integrity sha1-YU9/v42AHwu18GYfWy9XhXUOTwk=
-
-vybe-common@^1.0.60:
-  version "1.0.105"
-  resolved "http://localhost:4873/vybe-common/-/vybe-common-1.0.105.tgz#15683c1765b95d7796a95a2c827041fdd1c1a0f7"
-  integrity sha512-R+acWlsfvr6AYWMEABgLdbOvQmnpkTvr+hNeIMRu82GKPv+uToEynSINg/5lEaEzaWgaL3FXQhFkLFC1erPt+g==
-  dependencies:
-    mysql2 "^2.3.2"
-    yup "^0.32.11"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
