@@ -9,7 +9,7 @@ import { IUser as IModel } from "pro-web-common/dist/js/interfaces/models/IUser"
 import { Response } from "pro-web-common/dist/js/Response"
 import { ResponseMessages } from "pro-web-common/dist/js/enums/ResponseMessages"
 import { Validators } from "pro-web-common/dist/js/validators"
-
+import { publicKeyValidator } from "../../utils"
 
 
 export default function _controller(router: express.Router) {
@@ -47,13 +47,20 @@ export default function _controller(router: express.Router) {
                 const result = await Validators.username.validate(username)
                 if(result !== username) {
                     Promise.reject(result.toString())
-                } else {
-                    Promise.resolve()
+                }
+            })
+        ,
+        validator.body("publicKey")
+            .custom(async publicKey => {
+                const result = await publicKeyValidator(publicKey)
+                if(!result) {
+                    Promise.reject("invalid public key")
                 }
             })
         ,
         async function(req, res, next) {       
-            console.log("requestbody", req.body)     
+            //@ts-ignore
+            console.log("requestbody", req.errors)     
             //@ts-ignore
             const errors = validator.validationResult(req).errors
             console.log("errors", errors)

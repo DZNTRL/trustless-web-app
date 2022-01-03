@@ -10023,10 +10023,10 @@ pro-web-common@^1.0.34:
     mysql2 "^2.3.2"
     yup "^0.32.11"
 
-pro-web-core@^1.0.34:
-  version "1.0.34"
-  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.34.tgz#1c5063bc3c8848ccdda10b9696ba0dc00dd06300"
-  integrity sha512-LhLYopt9eeYtXvSAVmuTyi2KB6vnAbMKO1VQnCIdQ7EivNvwEQVFzcNo2WuICfEMBfx0kJrxJ5uEzB0FUbdRuA==
+pro-web-core@^1.0.35:
+  version "1.0.35"
+  resolved "http://localhost:4873/pro-web-core/-/pro-web-core-1.0.35.tgz#2ebcb7d59356536df8c6e2aeb14ad6732c2e10e1"
+  integrity sha512-eS8SoXWe6RgElihp50i5Zj6n0ZpvypeNtUrWP4YTLXt2rwsMxnJiGBgac8rA1eO+a5mmimlclAQEnBQ78pOctA==
   dependencies:
     async "^3.2.1"
     bip39 "^3.0.4"

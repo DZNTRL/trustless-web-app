@@ -8,6 +8,7 @@ import express from "express"
 import { IUser } from "pro-web-common/dist/js/interfaces/service/IUser"
 import { IResponse } from "pro-web-common/dist/js/interfaces/IResponse"
 import * as validator from "express-validator"
+import { readKey } from "openpgp"
 
 export function getJWT(request) {
   const authHeader = request.cookies["authorization"]
@@ -110,4 +111,15 @@ export function reportErrors<T>(response: IResponse<T>, req: express.Request, re
         response.IsError = true
         response.Message = errors.map(x => `${x.param}: ${x.msg}`)
     }
+}
+
+export function publicKeyValidator(publicKey: string) {
+  return new Promise<boolean>(async (res) => {
+    try { 
+      const result = await readKey({armoredKey: publicKey})
+      res(true)
+    } catch {
+      res(false)
+    }  
+  })
 }

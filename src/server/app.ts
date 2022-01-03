@@ -49,7 +49,7 @@ export async function createApp(core: IProWebCore) {
   app.use("/api", apiRouter) 
   app.use(express.static("public"))
   app.use(function(req, res, next) {
-    next(createError(404))
+    res.render("404")
   })
   // error handler
   app.use(function(err, req, res, next) {

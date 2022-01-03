@@ -13,7 +13,7 @@ export default function _controller(router: express.Router) {
     router.get("/", function(req, res, next) {
         const app = ReactDOMServer.renderToString(<App />)
         res.render("home", { 
-            title: "test2",
+            title: "DZNTRL",
             content: app
         })
     })
@@ -35,6 +35,10 @@ export default function _controller(router: express.Router) {
             content: app
         })
     })
+    router.get("/FAQs", function(req, res, next) {
+        res.render("faqs")
+    })
+
     router.get("/storybook", function(req, res, next) {
         request("http://localhost:6006").pipe(res)
     })
